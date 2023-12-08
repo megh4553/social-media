@@ -35,7 +35,7 @@ const PostListProvider = ({children}) => {
         userId:userId,
         title:postTitle,
         body:postBody,
-        tage : tags,
+        tags : tags,
         reactions: postReview
       }
     }) 
