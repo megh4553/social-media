@@ -27,6 +27,11 @@
   margin-top: 50px;
 }
 
+.welcome-msg{
+  margin-top: 100px;
+  margin-bottom: 80px;
+
+}
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
