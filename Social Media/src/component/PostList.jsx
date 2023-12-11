@@ -1,20 +1,25 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Post from "./post"
 import { PostList as PostListData} from "../store/post-list-store";
 import WelcomeMessage from "./WelcomeMessage";
 
 const PostList = () => {
     const { postList, addInitialPost } = useContext(PostListData);
+    const [fetching, setfetching] = useState(false);
+    useEffect (() => {
+        setfetching(true);
+        console.log("fetch started"),
 
-    const handleGetPostClick = () =>{
-        fetch("https://dummyjson.com/posts")
-        .then((res) => res.json()).then((data => addInitialPost(data.posts))  );
-    }
-    // console.log(postList);
+        fetch("https://dummyjson.com/posts").then((ras) => ras.json()).then(data => {
+            addInitialPost(data.posts);
+            setfetching(false);
+        });
+    },[])
+
     return(
         <>
             {
-                postList.length === 0 && <WelcomeMessage onGetPostClick={handleGetPostClick}/>
+                postList.length === 0 && <WelcomeMessage />
             }
             {postList.map((post) => (
                 <Post key={post.id} post={post}/>
