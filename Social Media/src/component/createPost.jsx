@@ -16,8 +16,14 @@ const Createpost = () => {
     const userId = userIdElement.current.value;
     const postTitle = postTitleElement.current.value;
     const postBody = postBodyElement.current.value;
-    const tags = tagElement.current.value.split(/(\s+)/);
+    const tags = tagElement.current.value.split(" ");
     const postReview = postReviewElement.current.value;
+
+    userIdElement.current.value = "";
+    postTitleElement.current.value = "";
+    postBodyElement.current.value = "";
+    tagElement.current.value = "";
+    postReviewElement.current.value = "";
 
     addPost(userId, postTitle, postBody, tags, postReview)
   }
