@@ -6,27 +6,13 @@ import LoadingSpiner from "./loadingSpiner";
 
 const PostList = () => {
     const { postList, addInitialPost } = useContext(PostListData);
-    const [fetching, setfetching] = useState(false);
-    useEffect (() => {
-        setfetching(true);
-        console.log("fetch started"),
-
-        fetch("https://dummyjson.com/posts").then((ras) => ras.json()).then(data => {
-            addInitialPost(data.posts);
-            setfetching(false);
-        }); 
-    },[])
-
+    
     return(
         <>
         {fetching && <LoadingSpiner />}
-            {
-                postList.length === 0 && <WelcomeMessage />
-            }
-            {postList.map((post) => (
-                <Post key={post.id} post={post}/>
-            ))}
+        {!fetching && postList.length === 0 && <WelcomeMessage />}
+        {!fetching && postList.map((post) => <Post key={post.id} post={post} />)}
         </>
-    )
+    );
 };
 export default PostList;

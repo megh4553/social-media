@@ -31,17 +31,10 @@ const PostListProvider = ({children}) => {
     []
   );
   
-  const addPost = (userId, postTitle, postBody, tags, postReview) => {
+  const addPost = (post) => {
     dispatchPostList({
       type : "ADD_POST",
-      payload : {
-        id: Date.now(),
-        userId:userId,
-        title:postTitle,
-        body:postBody,
-        tags : tags,
-        reactions: postReview
-      }
+      payload : post
     }) 
   };
 

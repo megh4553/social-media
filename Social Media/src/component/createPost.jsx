@@ -19,20 +19,25 @@ const Createpost = () => {
     const tags = tagElement.current.value.split(" ");
     const postReview = postReviewElement.current.value;
 
-    userIdElement.current.value = "";
-    postTitleElement.current.value = "";
-    postBodyElement.current.value = "";
-    tagElement.current.value = "";
-    postReviewElement.current.value = "";
+    // userIdElement.current.value = "";
+    // postTitleElement.current.value = "";
+    // postBodyElement.current.value = "";
+    // tagElement.current.value = "";
+    // postReviewElement.current.value = "";
 
     fetch ("https://dummyjson.com/posts/add",{
       method:"POST",
       headers : {"content-type" : "application/json" },
       body:JSON.stringify({
-        title : "Hello There😎😎",
-        userId : 5,
-      })
-    }).then((res) => res.json()).then(console.log);
+        title : postTitle,
+        userId : userId,
+        body : postBody,
+        tags : tags,
+        review : postReview,
+      }),
+    }).then((res) => res.json()).then((post) => {
+      console.log(post);
+      addPost(post)});
 
     addPost(userId, postTitle, postBody, tags, postReview)
   }
