@@ -1,7 +1,8 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect,useState } from "react";
 import Post from "./post"
 import { PostList as PostListData} from "../store/post-list-store";
 import WelcomeMessage from "./WelcomeMessage";
+import LoadingSpiner from "./loadingSpiner";
 
 const PostList = () => {
     const { postList, addInitialPost } = useContext(PostListData);
@@ -13,11 +14,12 @@ const PostList = () => {
         fetch("https://dummyjson.com/posts").then((ras) => ras.json()).then(data => {
             addInitialPost(data.posts);
             setfetching(false);
-        });
+        }); 
     },[])
 
     return(
         <>
+        {fetching && <LoadingSpiner />}
             {
                 postList.length === 0 && <WelcomeMessage />
             }

@@ -25,6 +25,15 @@ const Createpost = () => {
     tagElement.current.value = "";
     postReviewElement.current.value = "";
 
+    fetch ("https://dummyjson.com/posts/add",{
+      method:"POST",
+      headers : {"content-type" : "application/json" },
+      body:JSON.stringify({
+        title : "Hello There😎😎",
+        userId : 5,
+      })
+    }).then((res) => res.json()).then(console.log);
+
     addPost(userId, postTitle, postBody, tags, postReview)
   }
   return (
