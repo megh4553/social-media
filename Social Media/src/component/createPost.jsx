@@ -25,7 +25,7 @@ const Createpost = () => {
     // tagElement.current.value = "";
     // postReviewElement.current.value = "";
 
-    fetch ("https://dummyjson.com/posts/add",{
+    fetch ("https://dummyjson.com/posts/add", {
       method:"POST",
       headers : {"content-type" : "application/json" },
       body:JSON.stringify({
@@ -36,10 +36,8 @@ const Createpost = () => {
         review : postReview,
       }),
     }).then((res) => res.json()).then((post) => {
-      console.log(post);
       addPost(post)});
 
-    addPost(userId, postTitle, postBody, tags, postReview)
   }
   return (
     <form className=" create-post" onSubmit={handleSubmit}>

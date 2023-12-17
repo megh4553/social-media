@@ -63,7 +63,7 @@ const PostListProvider = ({children}) => {
     const controller = new AbortController();
     const signal = controller.signal;
 
-    fetch("https://dummyjson.com/posts", { signal}).then((res) => res.json)
+    fetch("https://dummyjson.com/posts" ).then((res) => res.json)
     .then((data) => {addInitialPosts(data.posts);
       setFetching(false);
     });

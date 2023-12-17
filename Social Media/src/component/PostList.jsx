@@ -8,12 +8,12 @@ const PostList = () => {
     const { postList,fetching } = useContext(PostListData);
     
     return(
-        <>
-        {fetching && <LoadingSpiner />}
-        {console.log(postList.length)}
-        {!fetching && postList.length === 0 && <WelcomeMessage />}
-        {!fetching && postList.map((post) => <Post key={post.id} post={post} />)}
-        </>
+        <div>
+        {fetching && <LoadingSpiner />},
+        {console.log(postList)},
+        {!fetching && postList.length === 0 && <WelcomeMessage />},
+        {!fetching && postList.map((post) => <Post key={post.id} post={post} />)},
+        </div>
     );
 };
 export default PostList;
